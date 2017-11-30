@@ -22,7 +22,11 @@ export class PostDetailPage extends React.Component {
       name: this.props.post.name,
       title: this.props.post.title,
       content: this.props.post.content,
+      voteCount: this.props.post.voteCount
     };
+
+    this.handleEditPost = this.handleEditPost.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
   }
 
   handleInputChange (event) {
@@ -77,6 +81,7 @@ export class PostDetailPage extends React.Component {
             ? this.renderPostForm()
             : this.renderPost()
         }
+
       </div>
     );
   }
@@ -89,6 +94,7 @@ PostDetailPage.propTypes = {
     content: PropTypes.string.isRequired,
     slug: PropTypes.string.isRequired,
     cuid: PropTypes.string.isRequired,
+    voteCount: PropTypes.number.isRequired
   }).isRequired,
   intl: PropTypes.shape({
     messages: PropTypes.shape({
@@ -110,10 +116,11 @@ function mapDispatchToProps(dispatch, props) {
   };
 }
 
+// Retrieve data from store as props
 function mapStateToProps(state, props) {
   return {
     post: getPost(state, props.params.cuid),
-    showEditPost: getShowEditPost(state),
+    showEditPost: getShowEditPost(state)
   };
 }
 
@@ -124,12 +131,8 @@ PostDetailPage.need = [params => {
   return fetchPost(params.cuid);
 }];
 
-// Retrieve data from store as props
-function mapStateToProps(state, props) {
-  return {
-    post: getPost(state, props.params.cuid),
-  };
-}
+
+
 
 PostDetailPage.propTypes = {
   post: PropTypes.shape({
@@ -138,6 +141,7 @@ PostDetailPage.propTypes = {
     content: PropTypes.string.isRequired,
     slug: PropTypes.string.isRequired,
     cuid: PropTypes.string.isRequired,
+    voteCount: PropTypes.number.isRequired
   }).isRequired,
 };
 
