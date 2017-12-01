@@ -21,8 +21,7 @@ export class PostDetailPage extends React.Component {
     this.state = {
       name: this.props.post.name,
       title: this.props.post.title,
-      content: this.props.post.content,
-      voteCount: this.props.post.voteCount
+      content: this.props.post.content
     };
 
     this.handleEditPost = this.handleEditPost.bind(this);
@@ -67,6 +66,7 @@ export class PostDetailPage extends React.Component {
         <h3 className={styles['post-title']}>{this.props.post.title}</h3>
         <p className={styles['author-name']}><FormattedMessage id="by" /> {this.props.post.name}</p>
         <p className={styles['post-desc']}>{this.props.post.content}</p>
+        <h4 className={styles['post-votes']}><FormattedMessage id="votes: " /> {this.props.post.voteCount}</h4>
       </div>
     );
   };
