@@ -32,7 +32,7 @@ class PostListPage extends Component {
 
   // INSERT +/- FUNCTIONS HERE
   handleThumbUpPost = post => {
-    console.log('handleThumbUpPost: ' + post.name + ' ciud ' + post.cuid);
+    console.log('handleThumbUpPost: ' + post.name + ' cuid: ' + post.cuid);
     this.props.dispatch(thumbUpPostRequest(post.cuid, post));
   };
 

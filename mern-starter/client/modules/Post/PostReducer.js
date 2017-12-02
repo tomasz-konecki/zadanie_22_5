@@ -5,17 +5,17 @@ const initialState = { data: [] };
 
 const PostReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_POST :
+    case ADD_POST:
       return {
         data: [action.post, ...state.data],
       };
 
-    case ADD_POSTS :
+    case ADD_POSTS:
       return {
         data: action.posts,
       };
 
-    case EDIT_POST :
+    case EDIT_POST:
       return {
         data: state.data.map(post => { return (post.cuid === action.cuid) 
           ? Object.assign({}, post, action.post)
@@ -23,7 +23,7 @@ const PostReducer = (state = initialState, action) => {
         })
       };
 
-    case DELETE_POST :
+    case DELETE_POST:
       return {
         data: state.data.filter(post => post.cuid !== action.cuid),
       };
